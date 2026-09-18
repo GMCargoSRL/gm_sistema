@@ -184,7 +184,8 @@ ISBT=0000
 
   const handleDescargarTxt = () => {
     const contenidoTxt = generarTxtMaria()
-    const blob = new Blob([contenidoTxt], { type: 'text/plain;charset=utf-8' })
+    const contenidoNormalizado = contenidoTxt.replace(/\r?\n/g, '\r\n')
+    const blob = new Blob([contenidoNormalizado], { type: 'text/plain;charset=utf-8' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
@@ -448,7 +449,6 @@ ISBT=0000
             </div>
           </div>
 
-          {/* Subítems y Estadísticas (F6 / F7) */}
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-2 border-t border-gray-100 dark:border-slate-800">
             <div>
               <label className="text-[11px] font-semibold text-gray-500">Unidades Estadísticas (QARTUNTEST)</label>

@@ -160,7 +160,8 @@ ISBT=0000
 
   const handleDescargarTxt = () => {
     const contenidoTxt = generarTxtMaria()
-    const blob = new Blob([contenidoTxt], { type: 'text/plain;charset=utf-8' })
+    const contenidoNormalizado = contenidoTxt.replace(/\r?\n/g, '\r\n')
+    const blob = new Blob([contenidoNormalizado], { type: 'text/plain;charset=utf-8' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
